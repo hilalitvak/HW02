@@ -51,22 +51,11 @@ public class Main {
         dt2.setMonth(-10);
         dt2.setMinute(59);
         System.out.println("dt2: " + dt2);
-        dt2.setHour(30);
-        dt2.setMonth(-10);
-        dt2.setMinute(59);
-        Date dt = new Date(2000, 4, 3);
-        DateTime dt4 = new DateTime(2000, 4, 3, 0, 0);
-        System.out.println(dt.hashCode());
-        System.out.println(dt4.hashCode());
-        System.out.println(dt.equals(dt4));
-        System.out.println(dt4.equals(dt));
     }
-
 
     /**
      * Performs tests of part B.
      */
-
     private static void testPartB() {
         System.out.println("-------------------- Tests for part B --------------------");
         rnd = new Random(42);
@@ -174,7 +163,6 @@ public class Main {
     /**
      * Tests the methods of a given function.
      */
-
     private static void testFunction(Function function, String name, int taylorMaxOrder) {
         System.out.println(name + ": " + function);
         System.out.println(name + " with toString: " + function.toString());
@@ -208,7 +196,6 @@ public class Main {
      * @param num The number to round
      * @return The rounded number
      */
-
     private static double roundThreePlaces(double num) {
         return Double.parseDouble(String.format("%.3f", num));
     }
