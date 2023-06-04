@@ -38,14 +38,7 @@ public class Polynomial extends Function{
      * @return the value of the function in point x
      */
     public double valueAt(double x){
-        double value=0;
-        for(int i=0; i < this.coefficients.length; i++){
-            if(i==0)
-                value+= this.coefficients[i];
-            else
-                value+= this.coefficients[i]*Math.pow(x, i);
-        }
-        return value;
+        return super.valueAt(x);
     }
 
     /**

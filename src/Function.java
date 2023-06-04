@@ -15,7 +15,14 @@ public class Function {
      * @return the value of the function at x
      */
     public double valueAt(double x) {
-        return this.values[0];
+        double value=0;
+        for(int i=0; i < this.values.length; i++){
+            if(i==0)
+                value+= this.values[i];
+            else
+                value+= this.values[i]*Math.pow(x, i);
+        }
+        return value;
     }
 
     /**
@@ -23,8 +30,10 @@ public class Function {
      */
     @Override
     public String toString() {
-        return super.toString();
+        return "("+super.toString()+")";
     }
+
+
 
     /**
      * calculates the derivative of the function
@@ -64,6 +73,15 @@ public class Function {
         }
         return (left + right)/2;
     }
+
+    /**
+     * @return the values of the function
+     */
+    public double[] getValues() {
+        return values;
+    }
+
+
 
     /**
      *
@@ -118,6 +136,38 @@ public class Function {
         }
         taylor = new Polynomial(coefficients);
         return taylor;
+    }
+
+    /**
+     * adds two functions together and returns the result
+     * @param f the function to add
+     * @return the result of the addition
+     */
+    public Function add(Function f){
+        double[] new_values= new double[Math.max(this.values.length, f.values.length)];
+        for(int i=0; i < new_values.length; i++){
+            if(i < this.values.length && i < f.values.length)//if both are in range
+                new_values[i]= this.values[i] + f.values[i];
+            else if(i < this.values.length)//if f is shorter than this
+                new_values[i]= this.values[i];
+            else//if this is shorter than f
+                new_values[i]= f.values[i];
+        }
+        return new Function(new_values);
+    }
+
+
+    public Function subtract(Function f){
+        double[] new_values= new double[Math.max(this.values.length, f.values.length)];
+        for(int i=0; i < new_values.length; i++){
+            if(i < this.values.length && i < f.values.length)//if both are in range
+                new_values[i]= this.values[i] - f.values[i];
+            else if(i < this.values.length)//if f is shorter than this
+                new_values[i]= this.values[i];
+            else//if this is shorter than f
+                new_values[i]= -f.values[i];
+        }
+        return new Function(new_values);
     }
 
 }
